@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://twitterBackEnd.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://twitterBackEnd.com" xmlns:intf="http://twitterBackEnd.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://twitterBackEnd.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="getProfile">
+    <complexType>
+     <sequence>
+      <element name="inputEmail" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getProfileResponse">
+    <complexType>
+     <sequence>
+      <element name="getProfileReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="signup">
+    <complexType>
+     <sequence>
+      <element name="inputEmail" type="xsd:string"/>
+      <element name="inputFirstname" type="xsd:string"/>
+      <element name="inputLastname" type="xsd:string"/>
+      <element name="encrypted" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="signupResponse">
+    <complexType>
+     <sequence>
+      <element name="signupReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="follow">
+    <complexType>
+     <sequence>
+      <element name="inputEmail" type="xsd:string"/>
+      <element name="followEmail" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="followResponse">
+    <complexType>
+     <sequence>
+      <element name="followReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="username">
+    <complexType>
+     <sequence>
+      <element name="inputUsername" type="xsd:string"/>
+      <element name="inputEmail" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="usernameResponse">
+    <complexType>
+     <sequence>
+      <element name="usernameReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addBio">
+    <complexType>
+     <sequence>
+      <element name="inputEmail" type="xsd:string"/>
+      <element name="location" type="xsd:string"/>
+      <element name="dob" type="xsd:string"/>
+      <element name="phone" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addBioResponse">
+    <complexType>
+     <sequence>
+      <element name="addBioReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="signin">
+    <complexType>
+     <sequence>
+      <element name="inputEmail" type="xsd:string"/>
+      <element name="hash" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="signinResponse">
+    <complexType>
+     <sequence>
+      <element name="signinReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="onLoadData">
+    <complexType>
+     <sequence>
+      <element name="inputEmail" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="onLoadDataResponse">
+    <complexType>
+     <sequence>
+      <element name="onLoadDataReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="insertTweet">
+    <complexType>
+     <sequence>
+      <element name="Email" type="xsd:string"/>
+      <element name="Tweet" type="xsd:string"/>
+      <element name="Time" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="insertTweetResponse">
+    <complexType>
+     <sequence>
+      <element name="insertTweetReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="searchHash">
+    <complexType>
+     <sequence>
+      <element name="simplestr" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="searchHashResponse">
+    <complexType>
+     <sequence>
+      <element name="searchHashReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="followRequest">
+
+      <wsdl:part element="impl:follow" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="signupResponse">
+
+      <wsdl:part element="impl:signupResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="usernameRequest">
+
+      <wsdl:part element="impl:username" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="signinRequest">
+
+      <wsdl:part element="impl:signin" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="signupRequest">
+
+      <wsdl:part element="impl:signup" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getProfileRequest">
+
+      <wsdl:part element="impl:getProfile" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="addBioResponse">
+
+      <wsdl:part element="impl:addBioResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="insertTweetRequest">
+
+      <wsdl:part element="impl:insertTweet" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchHashRequest">
+
+      <wsdl:part element="impl:searchHash" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="followResponse">
+
+      <wsdl:part element="impl:followResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getProfileResponse">
+
+      <wsdl:part element="impl:getProfileResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="addBioRequest">
+
+      <wsdl:part element="impl:addBio" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="insertTweetResponse">
+
+      <wsdl:part element="impl:insertTweetResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="onLoadDataRequest">
+
+      <wsdl:part element="impl:onLoadData" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="signinResponse">
+
+      <wsdl:part element="impl:signinResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="onLoadDataResponse">
+
+      <wsdl:part element="impl:onLoadDataResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchHashResponse">
+
+      <wsdl:part element="impl:searchHashResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="usernameResponse">
+
+      <wsdl:part element="impl:usernameResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="HomeJava">
+
+      <wsdl:operation name="getProfile">
+
+         <wsdl:input message="impl:getProfileRequest" name="getProfileRequest"/>
+
+         <wsdl:output message="impl:getProfileResponse" name="getProfileResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="signup">
+
+         <wsdl:input message="impl:signupRequest" name="signupRequest"/>
+
+         <wsdl:output message="impl:signupResponse" name="signupResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="follow">
+
+         <wsdl:input message="impl:followRequest" name="followRequest"/>
+
+         <wsdl:output message="impl:followResponse" name="followResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="username">
+
+         <wsdl:input message="impl:usernameRequest" name="usernameRequest"/>
+
+         <wsdl:output message="impl:usernameResponse" name="usernameResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addBio">
+
+         <wsdl:input message="impl:addBioRequest" name="addBioRequest"/>
+
+         <wsdl:output message="impl:addBioResponse" name="addBioResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="signin">
+
+         <wsdl:input message="impl:signinRequest" name="signinRequest"/>
+
+         <wsdl:output message="impl:signinResponse" name="signinResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="onLoadData">
+
+         <wsdl:input message="impl:onLoadDataRequest" name="onLoadDataRequest"/>
+
+         <wsdl:output message="impl:onLoadDataResponse" name="onLoadDataResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="insertTweet">
+
+         <wsdl:input message="impl:insertTweetRequest" name="insertTweetRequest"/>
+
+         <wsdl:output message="impl:insertTweetResponse" name="insertTweetResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchHash">
+
+         <wsdl:input message="impl:searchHashRequest" name="searchHashRequest"/>
+
+         <wsdl:output message="impl:searchHashResponse" name="searchHashResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="HomeJavaSoapBinding" type="impl:HomeJava">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getProfile">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getProfileRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getProfileResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="signup">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="signupRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="signupResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="follow">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="followRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="followResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="username">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="usernameRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="usernameResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addBio">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addBioRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addBioResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="signin">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="signinRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="signinResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="onLoadData">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="onLoadDataRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="onLoadDataResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="insertTweet">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="insertTweetRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="insertTweetResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchHash">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="searchHashRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="searchHashResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="HomeJavaService">
+
+      <wsdl:port binding="impl:HomeJavaSoapBinding" name="HomeJava">
+
+         <wsdlsoap:address location="http://localhost:8080/twitter3/services/HomeJava"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

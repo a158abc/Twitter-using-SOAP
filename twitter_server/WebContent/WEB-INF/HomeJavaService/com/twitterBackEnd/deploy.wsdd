@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from HomeJavaService WSDL service -->
+
+  <service name="HomeJava" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://twitterBackEnd.com"/>
+      <parameter name="wsdlServiceElement" value="HomeJavaService"/>
+      <parameter name="schemaQualified" value="http://twitterBackEnd.com"/>
+      <parameter name="wsdlServicePort" value="HomeJava"/>
+      <parameter name="className" value="com.twitterBackEnd.HomeJava"/>
+      <parameter name="wsdlPortType" value="HomeJava"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://twitterBackEnd.com" xmlns:retNS="http://twitterBackEnd.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getProfile" qname="operNS:getProfile" returnQName="retNS:getProfileReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://twitterBackEnd.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:inputEmail" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://twitterBackEnd.com" xmlns:retNS="http://twitterBackEnd.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="signup" qname="operNS:signup" returnQName="retNS:signupReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://twitterBackEnd.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:inputEmail" type="tns:string"/>
+        <parameter xmlns:pns="http://twitterBackEnd.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:inputFirstname" type="tns:string"/>
+        <parameter xmlns:pns="http://twitterBackEnd.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:inputLastname" type="tns:string"/>
+        <parameter xmlns:pns="http://twitterBackEnd.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:encrypted" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://twitterBackEnd.com" xmlns:retNS="http://twitterBackEnd.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="follow" qname="operNS:follow" returnQName="retNS:followReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://twitterBackEnd.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:inputEmail" type="tns:string"/>
+        <parameter xmlns:pns="http://twitterBackEnd.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:followEmail" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://twitterBackEnd.com" xmlns:retNS="http://twitterBackEnd.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="username" qname="operNS:username" returnQName="retNS:usernameReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://twitterBackEnd.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:inputUsername" type="tns:string"/>
+        <parameter xmlns:pns="http://twitterBackEnd.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:inputEmail" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://twitterBackEnd.com" xmlns:retNS="http://twitterBackEnd.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="addBio" qname="operNS:addBio" returnQName="retNS:addBioReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://twitterBackEnd.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:inputEmail" type="tns:string"/>
+        <parameter xmlns:pns="http://twitterBackEnd.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:location" type="tns:string"/>
+        <parameter xmlns:pns="http://twitterBackEnd.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:dob" type="tns:string"/>
+        <parameter xmlns:pns="http://twitterBackEnd.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:phone" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://twitterBackEnd.com" xmlns:retNS="http://twitterBackEnd.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="signin" qname="operNS:signin" returnQName="retNS:signinReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://twitterBackEnd.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:inputEmail" type="tns:string"/>
+        <parameter xmlns:pns="http://twitterBackEnd.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:hash" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://twitterBackEnd.com" xmlns:retNS="http://twitterBackEnd.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="onLoadData" qname="operNS:onLoadData" returnQName="retNS:onLoadDataReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://twitterBackEnd.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:inputEmail" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://twitterBackEnd.com" xmlns:retNS="http://twitterBackEnd.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="insertTweet" qname="operNS:insertTweet" returnQName="retNS:insertTweetReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://twitterBackEnd.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:Email" type="tns:string"/>
+        <parameter xmlns:pns="http://twitterBackEnd.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:Tweet" type="tns:string"/>
+        <parameter xmlns:pns="http://twitterBackEnd.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:Time" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://twitterBackEnd.com" xmlns:retNS="http://twitterBackEnd.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="searchHash" qname="operNS:searchHash" returnQName="retNS:searchHashReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://twitterBackEnd.com" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:simplestr" type="tns:string"/>
+      </operation>
+      <parameter name="allowedMethods" value="addBio signin searchHash getProfile insertTweet onLoadData follow signup username"/>
+
+  </service>
+</deployment>
